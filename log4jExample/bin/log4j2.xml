@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="6">
+	<Properties>
+		<Property name="filename">./logs</Property>
+	</Properties>
+	
+	<Appenders>
+		<RollingFile name="File"
+		filePattern="${filename}/Timer_%d{dd-MM-yyyy}.log">
+			<PatternLayout>
+				<pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+			</PatternLayout>
+            <Policies>
+            	<SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            	</RollingFile>
+       <Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	
+	</Appenders>
+	<Loggers>
+		<Root level="warn">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>
